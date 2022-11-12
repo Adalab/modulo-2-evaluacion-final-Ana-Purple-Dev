@@ -2,11 +2,15 @@
 
 const urlApi = 'https://breakingbadapi.com/api/characters';
 const sectionCharact = document.querySelector('.js-characters');
+const searchBtn = document.querySelector('.js-btn');
+const searchInput = document.querySelector('.js-search');
+let characters = [];
 
 fetch(urlApi)
   .then((response) => response.json())
   .then((data) => {
     console.log('Data from API', data);
+    characters = data;
 
     renderAllCharacters(data);
   });
@@ -27,3 +31,18 @@ function renderAllCharacters(data) {
   }
   sectionCharact.innerHTML = html;
 }
+
+function handleClickSearch(event) {
+  event.preventDefault();
+}
+
+function handleInput(event) {
+  event.preventDefault();
+  const inputValue = searchInput.value;
+  const filteredNames = characters.filter((character) =>
+    character.name.toLowerCase().includes(inputValue.toLowerCase())
+  );
+}
+
+searchBtn.addEventListener('click', handleClickSearch);
+searchInput.addEventListener('input', handleInput);
