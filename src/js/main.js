@@ -1,6 +1,7 @@
 'use strict';
 
 const urlApi = 'https://breakingbadapi.com/api/characters';
+const sectionCharact = document.querySelector('.js-characters');
 
 fetch(urlApi)
   .then((response) => response.json())
@@ -18,7 +19,11 @@ function renderAllCharacters(data) {
     const imgSrc = character.img;
     const status = character.status;
     const id = character.char_id;
-
-    console.log(name, imgSrc, status, id);
+    html += `<article id="${id}">
+    <img src="${imgSrc}" alt="Imagen de personaje de Breaking Bad" width="200" />
+    <h3>${name}</h3>
+    <h4>${status}</h4>
+  </article>`;
   }
+  sectionCharact.innerHTML = html;
 }
