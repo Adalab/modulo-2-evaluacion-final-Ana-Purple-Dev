@@ -15,13 +15,6 @@ fetch(urlApi)
     characters = data;
 
     renderAllCharacters(data);
-
-    // Añado el evento aquí porque es cuando está disponible el article en el HTML
-    const allArticles = document.querySelectorAll('article');
-
-    for (const article of allArticles) {
-      article.addEventListener('click', handleClickFavCharacter);
-    }
   });
 
 function renderAllCharacters(data) {
@@ -39,8 +32,14 @@ function renderAllCharacters(data) {
     <h4>${status}</h4>
     </article>`;
   }
-
   sectionCharact.innerHTML = html;
+
+  // Añado el evento aquí porque es cuando está disponible el article en el HTML
+  const allArticles = document.querySelectorAll('article');
+
+  for (const article of allArticles) {
+    article.addEventListener('click', handleClickFavCharacter);
+  }
 }
 
 function handleClickSearch(event) {
@@ -67,7 +66,7 @@ function renderSectionFavCharacter(favCharacters) {
     const status = character.status;
     const id = character.char_id;
 
-    html += `<article id="${id}">
+    html += `<article id="${id}" class="selected">
     <img src="${imgSrc}" alt="Imagen de personaje de Breaking Bad" width="200" />
     <h3>${name}</h3>
     <h4>${status}</h4>
@@ -75,11 +74,15 @@ function renderSectionFavCharacter(favCharacters) {
   }
 
   sectionFavCharact.innerHTML = html;
+
+  const allArticles = document.querySelectorAll('article');
+
+  for (const article of allArticles) {
+    article.addEventListener('click', handleClickFavCharacter);
+  }
 }
 
 function handleClickFavCharacter(event) {
-  event.currentTarget.classList.toggle('selected');
-
   const selectedCharacter = characters.find(
     (character) => character.char_id === parseInt(event.currentTarget.id)
   );
@@ -93,10 +96,6 @@ function handleClickFavCharacter(event) {
   } else {
     favCharacters.splice(selectedCharacterIndex, 1);
   }
-
-  console.log(favCharacters);
-
-  console.log(selectedCharacter);
 
   renderSectionFavCharacter(favCharacters);
 }
