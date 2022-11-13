@@ -44,11 +44,6 @@ function renderAllCharacters(data) {
 
 function handleClickSearch(event) {
   event.preventDefault();
-  console.log('he hecho click');
-}
-
-function handleInput(event) {
-  event.preventDefault();
 
   const inputValue = searchInput.value;
   const filteredNames = characters.filter((character) =>
@@ -101,4 +96,3 @@ function handleClickFavCharacter(event) {
 }
 
 searchBtn.addEventListener('click', handleClickSearch);
-searchInput.addEventListener('input', handleInput);
