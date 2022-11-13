@@ -93,6 +93,17 @@ function handleClickFavCharacter(event) {
   }
 
   renderSectionFavCharacter(favCharacters);
+  localStorage.setItem('Favourites characters', JSON.stringify(favCharacters));
+}
+
+const savedFavCharacters = JSON.parse(
+  localStorage.getItem('Favourites characters')
+);
+console.log(savedFavCharacters);
+
+if (savedFavCharacters !== null) {
+  favCharacters = savedFavCharacters;
+  renderSectionFavCharacter(favCharacters);
 }
 
 searchBtn.addEventListener('click', handleClickSearch);
