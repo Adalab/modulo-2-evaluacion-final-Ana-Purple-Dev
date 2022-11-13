@@ -5,6 +5,7 @@ const sectionCharact = document.querySelector('.js-characters');
 const searchBtn = document.querySelector('.js-btn');
 const searchInput = document.querySelector('.js-search');
 const sectionFavCharact = document.querySelector('.js-favourites');
+
 let characters = [];
 let favCharacters = [];
 
@@ -18,7 +19,7 @@ fetch(urlApi)
   });
 
 function renderAllCharacters(data) {
-  let html = '';
+  let html = `<h2 class="sectionCharact__title">Characters</h2>`;
 
   for (const character of data) {
     const name = character.name;
@@ -53,7 +54,10 @@ function handleClickSearch(event) {
 }
 
 function renderSectionFavCharacter(favCharacters) {
-  let html = '';
+  let html = ` <h2 class="sectionFav__title">Favourites</h2>
+  <button class="js-deleteFavBtn sectionFav__deleteBtn">
+    Borrar todos
+  </button>`;
 
   for (const character of favCharacters) {
     const name = character.name;
@@ -62,19 +66,32 @@ function renderSectionFavCharacter(favCharacters) {
     const id = character.char_id;
 
     html += `<article id="${id}" class="selected">
+    <i class="js-iconX fa-solid fa-x"></i>
     <img src="${imgSrc}" alt="Imagen de personaje de Breaking Bad" width="200" />
     <h3>${name}</h3>
     <h4>${status}</h4>
     </article>`;
   }
-
   sectionFavCharact.innerHTML = html;
 
   const allArticles = document.querySelectorAll('article');
+  const allIconX = document.querySelectorAll('.js-iconX');
+  const deleteFavBtn = document.querySelector('.js-deleteFavBtn');
 
   for (const article of allArticles) {
     article.addEventListener('click', handleClickFavCharacter);
   }
+  for (const iconX of allIconX) {
+    iconX.addEventListener('click', handleClickDeleteFavCharacter);
+  }
+  deleteFavBtn.addEventListener('click', handleClickDeleteAllFav);
+}
+
+function handleClickDeleteAllFav(event) {
+  console.log('hice click');
+}
+function handleClickDeleteFavCharacter(event) {
+  console.log('he hecho click');
 }
 
 function handleClickFavCharacter(event) {

@@ -11,6 +11,11 @@
   display: flex;
   justify-content: space-around;
 }
+.sectionFav {
+  &__title {
+    color: Blue;
+  }
+}
 .selected {
   background-color: #c6801f;
 }
