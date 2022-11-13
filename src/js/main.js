@@ -34,14 +34,17 @@ function renderAllCharacters(data) {
 
 function handleClickSearch(event) {
   event.preventDefault();
+  console.log('he hecho click');
 }
 
 function handleInput(event) {
   event.preventDefault();
+
   const inputValue = searchInput.value;
   const filteredNames = characters.filter((character) =>
     character.name.toLowerCase().includes(inputValue.toLowerCase())
   );
+  renderAllCharacters(filteredNames);
 }
 
 searchBtn.addEventListener('click', handleClickSearch);
