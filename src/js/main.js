@@ -95,7 +95,14 @@ function handleClickSearch(event) {
 }
 /*Manejadora del botón Borrar todos los favoritos*/
 function handleClickDeleteAllFav(event) {
-  console.log('hice click');
+  let html = ` <h2 class="sectionFav__title">Favourites</h2>
+  <button class="js-deleteFavBtn sectionFav__deleteBtn">
+    Borrar todos
+  </button>`;
+  favCharacters = [];
+  html += favCharacters;
+  sectionFavCharact.innerHTML = html;
+  localStorage.removeItem('Favourites characters');
 }
 /*Manejadora del botón X Borrar un character favorito*/
 function handleClickDeleteFavCharacter(event) {
