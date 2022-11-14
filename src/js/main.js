@@ -1,5 +1,6 @@
 'use strict';
 
+/*Variables globales*/
 const urlApi = 'https://breakingbadapi.com/api/characters';
 const sectionCharact = document.querySelector('.js-characters');
 const searchBtn = document.querySelector('.js-btn');
@@ -9,6 +10,7 @@ const sectionFavCharact = document.querySelector('.js-favourites');
 let characters = [];
 let favCharacters = [];
 
+/*Llamada a la api*/
 fetch(urlApi)
   .then((response) => response.json())
   .then((data) => {
@@ -18,6 +20,9 @@ fetch(urlApi)
     renderAllCharacters(data);
   });
 
+/*FUNCIONES*/
+
+/*Pinta todos los characters*/
 function renderAllCharacters(data) {
   let html = `<h2 class="sectionCharact__title">Characters</h2>`;
 
@@ -43,16 +48,7 @@ function renderAllCharacters(data) {
   }
 }
 
-function handleClickSearch(event) {
-  event.preventDefault();
-
-  const inputValue = searchInput.value;
-  const filteredNames = characters.filter((character) =>
-    character.name.toLowerCase().includes(inputValue.toLowerCase())
-  );
-  renderAllCharacters(filteredNames);
-}
-
+/*Pinta los characters en la sección favoritos*/
 function renderSectionFavCharacter(favCharacters) {
   let html = ` <h2 class="sectionFav__title">Favourites</h2>
   <button class="js-deleteFavBtn sectionFav__deleteBtn">
@@ -87,13 +83,25 @@ function renderSectionFavCharacter(favCharacters) {
   deleteFavBtn.addEventListener('click', handleClickDeleteAllFav);
 }
 
+/*Manejadora del botón buscar*/
+function handleClickSearch(event) {
+  event.preventDefault();
+
+  const inputValue = searchInput.value;
+  const filteredNames = characters.filter((character) =>
+    character.name.toLowerCase().includes(inputValue.toLowerCase())
+  );
+  renderAllCharacters(filteredNames);
+}
+/*Manejadora del botón Borrar todos los favoritos*/
 function handleClickDeleteAllFav(event) {
   console.log('hice click');
 }
+/*Manejadora del botón X Borrar un character favorito*/
 function handleClickDeleteFavCharacter(event) {
   console.log('he hecho click');
 }
-
+/*Manejadora de seleccionar un character y hacerlo favorito*/
 function handleClickFavCharacter(event) {
   const selectedCharacter = characters.find(
     (character) => character.char_id === parseInt(event.currentTarget.id)
@@ -113,14 +121,15 @@ function handleClickFavCharacter(event) {
   localStorage.setItem('Favourites characters', JSON.stringify(favCharacters));
 }
 
+/*Local storage*/
 const savedFavCharacters = JSON.parse(
   localStorage.getItem('Favourites characters')
 );
-console.log(savedFavCharacters);
 
 if (savedFavCharacters !== null) {
   favCharacters = savedFavCharacters;
   renderSectionFavCharacter(favCharacters);
 }
 
+/*EVENTOS*/
 searchBtn.addEventListener('click', handleClickSearch);
