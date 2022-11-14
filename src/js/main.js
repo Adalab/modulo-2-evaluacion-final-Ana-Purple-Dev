@@ -9,6 +9,7 @@ const sectionFavCharact = document.querySelector('.js-favourites');
 
 let characters = [];
 let favCharacters = [];
+let favClickedCharacters = [];
 
 /*Llamada a la api*/
 fetch(urlApi)
@@ -62,7 +63,7 @@ function renderSectionFavCharacter(favCharacters) {
     const id = character.char_id;
 
     html += `<article id="${id}" class="selected">
-    <i class="js-iconX fa-solid fa-x"></i>
+    <i data-id="${id}" class="js-iconX fa-solid fa-x"></i>
     <img src="${imgSrc}" alt="Imagen de personaje de Breaking Bad" width="200" />
     <h3>${name}</h3>
     <h4>${status}</h4>
@@ -70,13 +71,13 @@ function renderSectionFavCharacter(favCharacters) {
   }
   sectionFavCharact.innerHTML = html;
 
-  const allArticles = document.querySelectorAll('article');
+  //const allArticles = document.querySelectorAll('article');
   const allIconX = document.querySelectorAll('.js-iconX');
   const deleteFavBtn = document.querySelector('.js-deleteFavBtn');
 
-  for (const article of allArticles) {
-    article.addEventListener('click', handleClickFavCharacter);
-  }
+  //for (const article of allArticles) {
+  //  article.addEventListener('click', handleClickFavCharacter);
+  //}
   for (const iconX of allIconX) {
     iconX.addEventListener('click', handleClickDeleteFavCharacter);
   }
@@ -106,8 +107,14 @@ function handleClickDeleteAllFav(event) {
 }
 /*Manejadora del botón X Borrar un character favorito*/
 function handleClickDeleteFavCharacter(event) {
-  console.log('he hecho click');
+  const selectedFavCharacterIndex = favCharacters.findIndex(
+    (favCharacter) =>
+      favCharacter.char_id === parseInt(event.currentTarget.dataset.id)
+  );
+  favCharacters.splice(selectedFavCharacterIndex, 1);
+  renderSectionFavCharacter(favCharacters);
 }
+
 /*Manejadora de seleccionar un character y hacerlo favorito*/
 function handleClickFavCharacter(event) {
   const selectedCharacter = characters.find(
