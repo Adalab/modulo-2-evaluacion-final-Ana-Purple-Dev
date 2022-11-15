@@ -47,7 +47,6 @@ function renderAllCharacters(data) {
     article.addEventListener('click', handleClickFavCharacter);
   }
 }
-/*Bonus: Si está en section favoritos que aparezca con una clase seleccionado en section Characters.*/
 
 /*Pinta los characters en la sección favoritos*/
 function renderSectionFavCharacter(favCharacters) {
@@ -71,13 +70,9 @@ function renderSectionFavCharacter(favCharacters) {
   }
   sectionFavCharact.innerHTML = html;
 
-  //const allArticles = document.querySelectorAll('article');
   const allIconX = document.querySelectorAll('.js-iconX');
   const deleteFavBtn = document.querySelector('.js-deleteFavBtn');
 
-  //for (const article of allArticles) {
-  //  article.addEventListener('click', handleClickFavCharacter);
-  //}
   for (const iconX of allIconX) {
     iconX.addEventListener('click', handleClickDeleteFavCharacter);
   }
