@@ -96,8 +96,8 @@ function handleClickSearch(event) {
 }
 /*Manejadora del botón Borrar todos los favoritos*/
 function handleClickDeleteAllFav(event) {
-  let html = ` <h2 class="sectionFav__title">Favourites</h2>
-  <button class="js-deleteFavBtn sectionFav__deleteBtn">
+  let html = ` <h2 class="main__sectionFav--title">Favourites</h2>
+  <button class="js-deleteFavBtn main__sectionFav--deleteBtn">
     Borrar todos
   </button>`;
   favCharacters = [];
