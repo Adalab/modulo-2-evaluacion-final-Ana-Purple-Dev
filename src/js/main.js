@@ -100,6 +100,7 @@ function handleClickDeleteAllFav(event) {
   sectionFavCharact.innerHTML = html;
   localStorage.removeItem('Favourites characters');
 }
+
 /*Manejadora del botón X Borrar un character favorito*/
 function handleClickDeleteFavCharacter(event) {
   const selectedFavCharacterIndex = favCharacters.findIndex(

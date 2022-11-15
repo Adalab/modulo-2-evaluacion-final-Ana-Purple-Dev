@@ -1,5 +1,5 @@
-/*@import 'core/variables';
-/*@import 'core/reset';/*
+@import 'core/variables';
+@import 'core/reset'; /*
 @import 'components/code';
 @import 'components/links';
 @import 'layout/page';
@@ -17,18 +17,18 @@
     background-repeat: no-repeat;
   }
   &__form {
-    background-color: white;
+    background-color: $color_white;
     display: flex;
     justify-content: center;
     gap: 20px;
     margin: 30px 0px;
     &--searchInput {
-      border: 2px solid #428c32;
+      border: 2px solid $color_green;
       width: 60%;
     }
     &--btn {
-      background-color: #428c32;
-      color: white;
+      background-color: $color_green;
+      color: $color_white;
       padding: 10px 20px;
       font-size: 18px;
       border: none;
@@ -45,12 +45,13 @@
     align-items: center;
 
     &--title {
-      color: #2b5e3a;
+      color: $color_dark_green;
       text-align: center;
+      margin-bottom: 10px;
     }
     &--deleteBtn {
-      background-color: #428c32;
-      color: white;
+      background-color: $color_green;
+      color: $color_white;
       padding: 5px 10px;
       font-size: 16px;
       border: none;
@@ -67,9 +68,9 @@
       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
       &--icon {
-        color: #2b5e3a;
+        color: $color_dark_green;
         padding: 15px;
-        border: 1px solid #2b5e3a;
+        border: 1px solid $color_dark_green;
       }
       &--name {
         font-weight: 700;
@@ -86,7 +87,7 @@
     align-items: center;
 
     &--title {
-      color: #2b5e3a;
+      color: $color_dark_green;
       text-align: center;
     }
     &--card {
@@ -109,11 +110,11 @@
   }
 }
 .selected {
-  background-color: #fcff558b;
+  background-color: $color_selected;
 }
 .footer {
-  background-color: #2b5e3a;
-  color: white;
+  background-color: $color_dark_green;
+  color: $color_white;
   position: fixed;
   bottom: 0;
   width: 100%;
