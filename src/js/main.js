@@ -34,8 +34,8 @@ function renderAllCharacters(data) {
 
     html += `<article id="${id}" class="main__sectionCharact--card">
     <img src="${imgSrc}" alt="Imagen de personaje de Breaking Bad" width="200" />
-    <h3>${name}</h3>
-    <h4>${status}</h4>
+    <h3 class="main__sectionCharact--card--name">${name}</h3>
+    <h4 class="main__sectionCharact--card--status">${status}</h4>
     </article>`;
   }
   sectionCharact.innerHTML = html;
@@ -65,8 +65,8 @@ function renderSectionFavCharacter(favCharacters) {
     html += `<article id="${id}" class="main__sectionFav--card selected">
     <i data-id="${id}" class="js-iconX fa-solid fa-x main__sectionFav--card--icon"></i>
     <img src="${imgSrc}" alt="Imagen de personaje de Breaking Bad" width="200" />
-    <h3>${name}</h3>
-    <h4>${status}</h4>
+    <h3 class="main__sectionCharact--card--name">${name}</h3>
+    <h4 class="main__sectionCharact--card--status">${status}</h4>
     </article>`;
   }
   sectionFavCharact.innerHTML = html;
