@@ -16,22 +16,22 @@
     <title>Buscador de Breaking Bad</title>
   </head>
   <body>
-    <header>
-      <h1 class="title">Breaking Bad</h1>
-      <form class="form">
+    <header class="header">
+      <img class="header__banner" />
+      <form class="header__form">
         <input
-          class="js-search search"
+          class="js-search header__form--searchInput"
           type="search"
           name="search"
           id="search"
           placeholder="Example: Walter White"
         />
-        <button class="js-btn btn" type="submit">Search</button>
+        <button class="js-btn header__form--btn" type="submit">Search</button>
       </form>
     </header>
 
     <main class="main">
-      <section class="js-favourites sectionFav"></section>
+      <section class="js-favourites main__sectionFav"></section>
       <section class="js-characters sectionCharact"></section>
     </main>
     <footer class="footer">

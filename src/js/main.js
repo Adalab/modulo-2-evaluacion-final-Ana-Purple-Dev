@@ -9,7 +9,6 @@ const sectionFavCharact = document.querySelector('.js-favourites');
 
 let characters = [];
 let favCharacters = [];
-let favClickedCharacters = [];
 
 /*Llamada a la api*/
 fetch(urlApi)
@@ -25,7 +24,7 @@ fetch(urlApi)
 
 /*Pinta todos los characters*/
 function renderAllCharacters(data) {
-  let html = `<h2 class="sectionCharact__title">Characters</h2>`;
+  let html = `<h2 class="main__sectionCharact--title">Characters</h2>`;
 
   for (const character of data) {
     const name = character.name;
@@ -33,7 +32,7 @@ function renderAllCharacters(data) {
     const status = character.status;
     const id = character.char_id;
 
-    html += `<article id="${id}">
+    html += `<article id="${id}" class="main__sectionCharact--card">
     <img src="${imgSrc}" alt="Imagen de personaje de Breaking Bad" width="200" />
     <h3>${name}</h3>
     <h4>${status}</h4>
@@ -48,11 +47,12 @@ function renderAllCharacters(data) {
     article.addEventListener('click', handleClickFavCharacter);
   }
 }
+/*Bonus: Si está en section favoritos que aparezca con una clase seleccionado en section Characters.*/
 
 /*Pinta los characters en la sección favoritos*/
 function renderSectionFavCharacter(favCharacters) {
-  let html = ` <h2 class="sectionFav__title">Favourites</h2>
-  <button class="js-deleteFavBtn sectionFav__deleteBtn">
+  let html = ` <h2 class="main__sectionFav--title">Favourites</h2>
+  <button class="js-deleteFavBtn main__sectionFav--deleteBtn">
     Borrar todos
   </button>`;
 
@@ -62,8 +62,8 @@ function renderSectionFavCharacter(favCharacters) {
     const status = character.status;
     const id = character.char_id;
 
-    html += `<article id="${id}" class="selected">
-    <i data-id="${id}" class="js-iconX fa-solid fa-x"></i>
+    html += `<article id="${id}" class="main__sectionFav--card selected">
+    <i data-id="${id}" class="js-iconX fa-solid fa-x main__sectionFav--card--icon"></i>
     <img src="${imgSrc}" alt="Imagen de personaje de Breaking Bad" width="200" />
     <h3>${name}</h3>
     <h4>${status}</h4>
